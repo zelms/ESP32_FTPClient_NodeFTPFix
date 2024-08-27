@@ -147,8 +147,8 @@ void ESP32_FTPClient::OpenConnection() {
   GetFTPAnswer();
 
   FTPdbgn("Send USER");
-  client.print(F("USER "));
-  client.println(F(userName));
+  String userStr = "USER " + String(userName);
+  client.println(F(userStr.c_str()));
   GetFTPAnswer();
 
   FTPdbgn("Send PASSWORD");
@@ -177,8 +177,8 @@ void ESP32_FTPClient::RenameFile(char* from, char* to) {
 void ESP32_FTPClient::NewFile (const char* fileName) {
   FTPdbgn("Send STOR");
   if(!isConnected()) return;
-  client.print(F("STOR "));
-  client.println(F(fileName));
+  String storStr = "STOR " + String(fileName);
+  client.println(F(storStr.c_str()));
   GetFTPAnswer();
 }
 
