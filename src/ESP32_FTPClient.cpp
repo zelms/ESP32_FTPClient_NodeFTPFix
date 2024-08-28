@@ -152,8 +152,8 @@ void ESP32_FTPClient::OpenConnection() {
   GetFTPAnswer();
 
   FTPdbgn("Send PASSWORD");
-  client.print(F("PASS "));
-  client.println(F(passWord));
+  String passStr = "PASS " + String(passWord);
+  client.println(F(passStr.c_str()));
   GetFTPAnswer();
   
   FTPdbgn("Send SYST");
