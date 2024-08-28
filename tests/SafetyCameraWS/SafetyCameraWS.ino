@@ -14,7 +14,7 @@ Distributed as-is; no warranty is given.
 #include "ESP32_FTPClient.h"
 
 #define WIFI_SSID "SSID"
-#define WIFI_PASS "pass"
+#define WIFI_PASS "PASS"
 
 char ftp_server[] = "192.168.0.197";
 char ftp_user[]   = "username";
@@ -42,19 +42,19 @@ void setup()
 
   ftp.OpenConnection();
 
-  // Get directory content
-  ftp.InitFile("Type A");
-  String list[128];
-  ftp.ChangeWorkDir("/test/");
-  ftp.ContentList("", list);
-  Serial.println("\nDirectory info: ");
-  for(int i = 0; i < sizeof(list); i++)
-  {
-    if(list[i].length() > 0)
-      Serial.println(list[i]);
-    else
-      break;
-  }
+  //Get directory content
+  // ftp.InitFile("Type A");
+  // String list[128];
+  // ftp.ChangeWorkDir("/test/");
+  // ftp.ContentList("", list);
+  // Serial.println("\nDirectory info: ");
+  // for(int i = 0; i < sizeof(list); i++)
+  // {
+  //   if(list[i].length() > 0)
+  //     Serial.println(list[i]);
+  //   else
+  //     break;
+  // }
 
   // Make a new directory
   ftp.InitFile("Type A");
@@ -68,7 +68,7 @@ void setup()
   // ftp.CloseFile();
 
   // Create the file new and write a string into it
-  ftp.InitFile("Type A");
+  // ftp.InitFile("Type A");
   ftp.NewFile("hello_world.txt");
   ftp.Write("Hello World");
   ftp.CloseFile();
